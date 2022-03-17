@@ -1,16 +1,14 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
 //contains all the methods used in Admin and User
 abstract class Functionalities {
-    static int[] current_date = new int[3];      //current date , month and year are made static i.e same across all instances
-    static int penalty;           //the penalty , fine if unpaid for >3 months
-    static int industrial_rate;   //Industrial and Personal Rates Constant
-    static int domestic_rate;
+    static int[] current_date = new int[3];      //current date , month and year are made static i.e. same across all instances
+    static double penalty;           //the penalty , fine if unpaid for >3 months
+    static double industrial_rate;   //Industrial and Personal Rates Constant
+    static double domestic_rate;
     static int no_of_users = 0;
-    static List<User> database = new ArrayList<User>();     //List of all the users
-    public int no_of_days(int n)     //function finds number of days in a given month
+    static List<User> database = new ArrayList<>();     //List of all the users
+    public int no_of_days(int n,int y)     //function finds number of days in a given month
     {
         int[] month31 = {1,3,5,7,8,10,12};
         int[] month30 = {4,6,9,11};
@@ -18,7 +16,7 @@ abstract class Functionalities {
             return 31;
         else if (binary_search(month30,0,3,n) != -1)
             return 30;
-        else if(n == 2 && n % 4 == 0)
+        else if(n == 2 && y % 4 == 0)
             return 29;
         else
             return 28;
@@ -49,16 +47,16 @@ abstract class Functionalities {
         return prev_date;
     }
 
-    public int bill_payment(int rate, int month, int status,int usage) //status 0 -> on time ,1 ->fine , -1 -> connection cut , function finds bill for current month
+    public double bill_payment(double rate, int month,int year, int status,double usage) //status 0 -> on time ,1 ->fine , -1 -> connection cut , function finds bill for current month
     {
-        int sum = 0;
+        double sum = 0;
         switch (status)
         {
             case(1):
-                 sum = no_of_days(month) * (penalty + rate) * usage ;
+                 sum =  no_of_days(month,year) * (penalty + rate) * usage ;
                  break;
             case(0):
-                sum = no_of_days(month) * rate * usage;
+                sum = no_of_days(month,year) * rate * usage;
                 break;
             case(-1):
                 sum = 0;

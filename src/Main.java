@@ -54,10 +54,12 @@ class Main {
 
     }
     static {
-        System.out.println("Do Not forget to set pricing beforehand");
-        System.out.println("1.Login as Admin Set Pricing ");
-        System.out.println("2.Then add Users ");
-        System.out.println("3.Login as User and Pay monthly bil");
-        System.out.println("4.Login as Admin to inspect an user ");
+        System.out.println("*********************************INSTRUCTIONS********************************");
+        System.out.println("Do Not forget to set pricing beforehand"); //Instructions for the user
+        System.out.println("STEP 1.Login as Admin Set Pricing ");
+        System.out.println("STEP 2.Then add Users ");
+        System.out.println("STEP 3.Login as User and Pay monthly bil");
+        System.out.println("STEP 4.Login as Admin to inspect an user ");
+        System.out.println("*****************************************************************************");
     }
 }
