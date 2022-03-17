@@ -23,7 +23,7 @@ class Admin extends Functionalities{
         for(int i = 0; i< user.payment_ledger.size() ; i++)
         {
             date = next_month(date);
-            System.out.println("Date:" + date[0] + "/" + date[1] + "/" + date[2] + "-->"+ "Amount Payable:" + user.pending_ledger.get(i) + "Amount Payed:"+ user.payment_ledger.get(i));
+            System.out.println("Date:" + date[0] + "/" + date[1] + "/" + date[2] + "-->"+ "|Amount Payable:" + user.pending_ledger.get(i) + "|Amount Payed:"+ user.payment_ledger.get(i));
         }
     }
     static public void add_user() throws IOException

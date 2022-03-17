@@ -39,10 +39,10 @@ class User extends Functionalities {
         date[1] = first_date[1];
         date[2] = first_date[2];
         int prev_payment_date[] ;
-        int status = 1;
+        int status = 0;
         prev_payment_date = previous_month(current_date,first_date);
         int iterator = 0;
-        while (date[1] != prev_payment_date[1] && date[2] != prev_payment_date[2])
+        while (date[1] != prev_payment_date[1] || date[2] != prev_payment_date[2])
         {
             date = next_month(date);
             if(payment_ledger.size()>1)
@@ -52,12 +52,14 @@ class User extends Functionalities {
                    if(payment_ledger.size()>3 && payment_ledger.get(iterator-2) == 0 && payment_ledger.get(iterator - 3) == 0)
                        status = -1;
                    else
-                       status = 0;
+                       status = 1;
                }else
-                   status = 1;
+                   status = 0;
             }
             if(status == -1)
             System.out.println("Connection Terminated ...... Pay to renew connection..............");
+            if(status == 1)
+                System.out.println("Late penalty applied to rate .............");
             pending_sum = pending_sum + bill_payment(rate,date[1],status,daily_usage);
             pending_ledger.add(pending_sum);
             System.out.print("Pay "+pending_sum+" on :"+date[0]+"/" + date[1]+ "/"+ date[2]+": (1)Yes/(2)No :");
