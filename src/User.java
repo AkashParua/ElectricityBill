@@ -3,7 +3,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 //class to define each user
 class User extends Functionalities {
     String name;        //Name of User
@@ -65,11 +64,12 @@ class User extends Functionalities {
                    status = 0;
             }
             if(status == -1)
-            System.out.println("Connection Terminated ...... Pay to renew connection");
+            System.out.println("!!!!Connection Terminated!!!! < Pay to renew connection >");
             if(status == 1)
-                System.out.println("............Late penalty applied to rate/unit +"+penalty);
+                System.out.println("Late penalty applied to rate/unit +"+penalty);
             pending_sum = pending_sum + bill_payment(rate,date[1],date[2],status,daily_usage);
             pending_ledger.add(pending_sum);
+            if(status != -1)
             System.out.println("Units Used: "+df.format(no_of_days(date[1],date[2])*daily_usage));
             System.out.print("Pay "+df.format(pending_sum)+" on :"+date[0]+"/" + date[1]+ "/"+ date[2]+": (1)Yes/(2)No :");
             int choice = sc.nextInt();
